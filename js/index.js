@@ -1,9 +1,9 @@
 //Game Constants & variables
 let inputDir={x:0,y:0};
-const foodSound=new Audio("../music/food.mp3");
-const gameOverSound=new Audio("../music/gameover.mp3");
-const moveSound=new Audio("../music/move.mp3");
-const musicSound=new Audio("../music/music.mp3");
+const foodSound=new Audio("music/food.mp3");
+const gameOverSound=new Audio("music/gameover.mp3");
+const moveSound=new Audio("music/move.mp3");
+const musicSound=new Audio("music/music.mp3");
 let speed=5;
 let score=0;
 let lastPaintTime=0;
@@ -41,7 +41,7 @@ function isCollide(sarr)
 
 
 function gameEngine()
-{
+{     musicSound.play();
     // Part 1: Updating the snake array & Food
     if(isCollide(snakeArr)){
         gameOverSound.play();
@@ -68,6 +68,7 @@ function gameEngine()
         food = {x: Math.round(a + (b-a)* Math.random()), y: Math.round(a + (b-a)* Math.random())}
     }
     //Moving the Snake
+   
     for (let i = snakeArr.length - 2; i>=0; i--) { 
         snakeArr[i+1] = {...snakeArr[i]};
     }
@@ -95,7 +96,7 @@ FoodElement=document.createElement('div');
 }
 
 //Main Logic Starts here
-musicSound.play();
+
 let hiscore = localStorage.getItem("hiscore");
 if(hiscore === null){
     hiscoreval = 0;
